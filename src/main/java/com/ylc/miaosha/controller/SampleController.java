@@ -1,5 +1,6 @@
 package com.ylc.miaosha.controller;
 
+import com.ylc.miaosha.redis.RedisService;
 import com.ylc.miaosha.result.Result;
 import com.ylc.miaosha.service.UserService;
 import com.ylc.miaosha.vo.User;
@@ -21,6 +22,9 @@ public class SampleController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private RedisService redisService;
 
     @RequestMapping("thymeleaf")
     public String thymeleaf(Model model){
@@ -45,6 +49,21 @@ public class SampleController {
     public Result<Boolean> insertUsers(){
         userService.insertUsers();
         return Result.success(true);
+    }
+
+
+    @RequestMapping("/redisGet")
+    @ResponseBody
+    public Result<String> redisGet(){
+        String str = redisService.get("123", String.class);
+        return Result.success(str);
+    }
+
+    @RequestMapping("/redisSet")
+    @ResponseBody
+    public Result<Boolean> redisSet(){
+        boolean  b = redisService.set("11","afda");
+        return Result.success(b);
     }
 }
 
