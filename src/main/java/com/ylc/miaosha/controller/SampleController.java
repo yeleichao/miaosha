@@ -37,7 +37,7 @@ public class SampleController {
         return Result.success("hello world");
     }
 
-    @RequestMapping("/getUsers")
+   /* @RequestMapping("/getUsers")
     @ResponseBody
     public Result<List<User>> getUsers(){
         List<User> users = userService.getUsers();
@@ -49,7 +49,7 @@ public class SampleController {
     public Result<Boolean> insertUsers(){
         userService.insertUsers();
         return Result.success(true);
-    }
+    }*/
 
 
     @RequestMapping("/redisGet")

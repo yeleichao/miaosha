@@ -1,7 +1,9 @@
 package com.ylc.miaosha.service;
 
 import com.ylc.miaosha.dao.UserDao;
-import com.ylc.miaosha.vo.User;
+import com.ylc.miaosha.dao.UserMapper;
+import com.ylc.miaosha.domain.User;
+import com.ylc.miaosha.vo.LoginVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,23 +17,17 @@ import java.util.List;
 @Service
 public class UserService {
 
+
     @Autowired
-    private UserDao userDao;
+    private UserMapper userMapper;
 
-    public List<User> getUsers (){
-       return userDao.getUser();
+    public boolean getUserByMobile(LoginVo vo){
+        User user = userMapper.selectByPrimaryKey(Long.valueOf(vo.getMobile()));
+        if(user.getPassword().equals(vo.getPassword())){
+            return true;
+        }
+        return false;
     }
 
-    @Transactional
-    public void insertUsers(){
-        User user1 = new User();
-        user1.setId("2");
-        user1.setName("222");
-        userDao.insert(user1);
 
-        User user2 = new User();
-        user2.setId("1");
-        user2.setName("111");
-        userDao.insert(user2);
-    }
 }
