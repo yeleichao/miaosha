@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.validation.Valid;
+
 /**
  * @Description: TODO
  * @Date: 2019/4/24
@@ -29,7 +31,7 @@ public class LoginController {
 
     @RequestMapping("/do_login")
     @ResponseBody
-    public Result<Boolean> do_login(LoginVo vo){
+    public Result<Boolean> do_login(@Valid LoginVo vo){
         log.info(vo.toString());
         boolean b = userService.getUserByMobile(vo);
         return Result.success(b);
