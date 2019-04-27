@@ -6,5 +6,14 @@
     <settings>
         <!-- 打印查询语句 -->
         <setting name="logImpl" value="STDOUT_LOGGING" />
+
+        <!-- 全局缓存（二级缓存）-->
+        <setting name="cacheEnabled" value="false"/>
+
+        <!-- 延迟加载， 默认false -->
+        <setting name="lazyLoadingEnabled" value="true" />
+        <!-- 当开启时，任何方法得调用都会加载该对象得所有属性 -->
+        <setting name="aggressiveLazyLoading" value="false" />
+
     </settings>
 </configuration>

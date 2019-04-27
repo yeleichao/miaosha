@@ -38,9 +38,12 @@
         <!--<table schema="gp" tableName="test" domainObjectName="Test">-->
             <!--<property name="useActualColumnNames" value="false"/>-->
         <!--</table>-->
+        <!-- 去掉自动生成的example类相关的东西 -->
+        <table schema="miaosha" tableName="miaosha_user" domainObjectName="User" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="true"/>
 
-        <table schema="miaosha" tableName="miaosha_user" domainObjectName="User">
-            <property name="useActualColumnNames" value="false"/>
         </table>
 
     </context>
